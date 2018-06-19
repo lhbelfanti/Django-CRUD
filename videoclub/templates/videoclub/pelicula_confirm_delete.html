@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row main">
+        <div class="panel panel-primary panel-primary-center restrict-width">
+            <div class="panel-heading panel-center panel-font-size">
+                <span class="fa fa-minus"></span>&nbsp;&nbsp;&nbsp;Eliminar película
+            </div>
+            <div class="panel-body panel-center panel-form-center restrict-width">
+                <label class="delete-label">¿Desea borrar la película <label class="delete-label-user">{{ object.nombre }}</label>?</label>
+                <form method="post">{% csrf_token %}
+                    <p>
+                        <div class="form-group">
+                            <input href="/pelicula/" type="submit" id="delete-button" class="btn btn-danger btn-lg form-button" value="Borrar"/>
+                        </div>
+                        <a href="/pelicula/" class="btn btn-primary btn-lg back-button">Volver</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

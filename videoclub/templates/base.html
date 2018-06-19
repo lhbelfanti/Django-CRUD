@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>{% block title %}Video Club{% endblock %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/add.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/delete.css' %}" />
+</head>
+
+<body>
+    <div>
+    <header class="header" id="header1">
+        <div class="center">
+            <div class="caption">
+                <h1 class="title display-3">Video Club</h1>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-dark">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown">Clientes<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/cliente/">Listar</a></li>
+              <li><a href="/cliente/crear/">Crear</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown">Película<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/pelicula/">Listar</a></li>
+              <li><a href="/pelicula/crear/">Crear</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown">Género<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/genero/">Listar</a></li>
+              <li><a href="/genero/crear/">Crear</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown">Prestamo<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/prestamo/">Listar</a></li>
+              <li><a href="/prestamo/crear/">Crear</a></li>
+            </ul>
+        </li>
+      </ul>
+    </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

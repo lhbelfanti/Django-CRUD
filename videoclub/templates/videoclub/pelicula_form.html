@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center  restrict-width">
+            <div class="panel-heading panel-center panel-font-size">
+                {% if object %}
+                    <span class="fa fa-pencil"></span>&nbsp;&nbsp;&nbsp;Modificar película
+                {% else %}
+                    <span class="fa fa-plus"></span>&nbsp;&nbsp;&nbsp;Agregar película
+                {% endif %}
+            </div>
+            <div class="panel-body panel-center panel-form-center restrict-width">
+                <form method="post">{% csrf_token %}
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-nombre" class="cols-sm-2">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-film" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="nombre" id="update-nombre" value="{{ form.nombre.value }}" placeholder="Nombre"/>
+                               </div>
+                            </div>
+                        {% else %}
+                            <label for="add-nombre" class="cols-sm-2 control-label">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-film" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="nombre" id="add-nombre" placeholder="Nombre"/>
+                               </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-estreno" class="cols-sm-2 control-label">Año de estreno</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="estreno" id="update-estreno" value="{{ form.estreno.value }}" placeholder="Estreno"/>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-estreno" class="cols-sm-2 control-label">Estreno</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="estreno" id="add-estreno"  placeholder="Estreno"/>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-duracion" class="cols-sm-2 control-label">Duración</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="duracion" id="update-duracion" value="{{ form.duracion.value }}" placeholder="Duración"/>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-duracion" class="cols-sm-2 control-label">Duración</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="duracion" id="add-duracion" placeholder="Duración"/>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-genero" class="cols-sm-2 control-label">Género</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
+                                    <select name='genero' id="update-genero" class="form-select">
+                                        <option value="">---------</option>
+                                        {% for genero in generos %}
+                                            <option value="{{ genero.codigo }}" {% if genero.codigo == form.genero.value %} selected {%endif%}>{{ genero.descripcion }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-genero" class="cols-sm-2 control-label">Género</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
+                                    <select name='genero' id="add-genero" class="form-select">
+                                        <option value="">---------</option>
+                                        {% for genero in generos %}
+                                            <option value="{{ genero.codigo }}">{{ genero.descripcion }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if object %}
+                        <div class="form-group">
+                            <input href="/pelicula/" type="submit" id="update-button" class="btn btn-warning btn-lg form-button" value="Modificar"/>
+                        </div>
+                    {% else %}
+                        <div class="form-group ">
+                            <input href="/pelicula/" type="submit" id="add-button" class="btn btn-success btn-lg form-button" value="Agregar"/>
+                        </div>
+                    {% endif %}
+                    <a href="/pelicula/" class="btn btn-primary btn-lg back-button">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

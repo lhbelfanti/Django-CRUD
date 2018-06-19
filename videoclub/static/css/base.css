@@ -1,0 +1,227 @@
+/* =======================================
+ header
+========================================*/
+.header {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+}
+
+.header .center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 90%;
+	transform:translate(-50%,-50%);
+	z-index: 5;
+  padding: 1rem;
+}
+
+.header .left {
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 90%;
+	transform:translate(-50%,-50%);
+	z-index: 5;
+  padding: 1rem;
+}
+
+.header .right {
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 90%;
+	transform:translate(-50%,-50%);
+	z-index: 5;
+  padding: 1rem;
+}
+
+.header .scroll {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+/*=== Large devices (desktops, 992px and up) ===*/
+@media (min-width: 992px) {
+    .header .center {
+      width: 50%;
+    }
+
+    .header .left {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      width: 40%;
+      height: 60%;
+      transform:translate(0, 0);
+      padding: 1rem;
+    }
+
+    .header .right {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      width: 40%;
+      height: 60%;
+      transform:translate(0, 0);
+      padding: 1rem;
+    }
+}
+
+h1.title {
+	font-size: 50px;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 400;
+	text-shadow: 2px 2px #3980c3;
+}
+
+/* =======================================
+ header1
+========================================*/
+#header1 .caption {
+	text-align: center;
+    color: #fff;
+}
+
+#header1 .caption .title {
+	margin-bottom: 1.5rem;
+}
+
+#header1 .caption .text {
+	margin-bottom: 1.5rem;
+}
+
+#header1 .caption .action {
+	margin-bottom: 1rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	border-radius: 15px;
+}
+
+/* =======================================
+ html - body - background
+========================================*/
+
+#playground-container {
+    height: 500px;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+body, html {
+     height: 100%;
+ 	background-repeat: no-repeat;
+ 	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
+ 	font-family: 'Oxygen', sans-serif;
+    background-size: cover;
+}
+
+/* =======================================
+ navbar
+========================================*/
+.navbar {
+    background:#3e9dda;
+    border: none;
+    font-size: 18px;
+}
+
+.nav>li>a {
+  border-bottom: 3px solid transparent;
+}
+.nav>li>a:focus {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+.nav>li>a:hover {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+.nav .open>a {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+
+.nav .open>a:focus {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+
+.nav .open>a:hover {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+
+.navbar a {
+ color: #fff;
+}
+
+.navbar-toggle {
+ color: #fff;
+}
+
+/* =======================================
+ dropdown-menu
+========================================*/
+.dropdown-menu {
+    background:#3e9dda;
+    border: none;
+    font-size: 18px;
+}
+
+.dropdown-menu>li>a:focus {
+  border-bottom: 3px solid transparent;
+}
+
+.dropdown-menu>li>a:hover {
+  border-bottom: 3px solid transparent;
+}
+
+.dropdown-menu>li>a {
+  border-bottom: 3px solid transparent;
+}
+
+.dropdown-menu>li {
+  border-bottom: 3px solid transparent;
+}
+
+.dropdown-menu>li>a:focus {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+
+.dropdown-menu>li>a:hover {
+  border-bottom: 3px solid transparent;
+  background: rgba(80, 139, 197, 0.80);
+}
+
+.dropdown-menu>li>a {
+ color: #fff;
+}
+
+.dropdown-menu>li>a:focus {
+ color: #fff;
+}
+
+.dropdown-menu>li>a:hover {
+ color: #fff;
+}
+
+/* =======================================
+ panel
+========================================*/
+.restrict-width {
+    max-width: 400px;
+}
+
+/* =======================================
+ back button
+========================================*/
+.back-button {
+    margin-top: 5px;
+    float:right;
+}

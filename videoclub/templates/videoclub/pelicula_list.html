@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center">
+            <div class="panel-heading panel-center panel-font-size">
+                <span class="fa fa-list"></span>&nbsp;&nbsp;&nbsp;Lista de películas (Ordenado por año)
+            </div>
+            <div class="panel-body panel-center">
+                <ul class="list-group">
+                    {% for p in peliculas  %}
+                        <li class="list-group-item">
+                            <span class="fa fa-film"></span>&nbsp;{{ p.nombre }}&nbsp;|&nbsp;
+                            <span class="fa fa-globe"></span>&nbsp;{{ p.estreno }}&nbsp;|&nbsp;
+                            <span class="fa fa-clock-o"></span>&nbsp;{{ p.duracion }}&nbsp;|&nbsp;
+                            <span class="fa fa-quote-left"></span>&nbsp;{{ p.genero }}&nbsp;
+                            <div class="pull-right">
+                                <a href="modificar/{{ p.id }}"><span class="fa fa-pencil fa-size"></span></a>
+                                <a href="eliminar/{{ p.id }}" class="trash"><span class="fa fa-trash fa-size"></span></a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

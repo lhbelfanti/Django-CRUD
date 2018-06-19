@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center  restrict-width">
+            <div class="panel-heading panel-center panel-font-size">
+                {% if object %}
+                    <span class="fa fa-pencil"></span>&nbsp;&nbsp;&nbsp;Modificar cliente
+                {% else %}
+                    <span class="fa fa-plus"></span>&nbsp;&nbsp;&nbsp;Agregar cliente
+                {% endif %}
+            </div>
+            <div class="panel-body panel-center panel-form-center restrict-width">
+                <form method="post">{% csrf_token %}
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-nombre" class="cols-sm-2">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="nombre" id="update-nombre" value="{{ form.nombre.value }}" placeholder="Nombre"/>
+                               </div>
+                            </div>
+                        {% else %}
+                            <label for="add-nombre" class="cols-sm-2 control-label">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="nombre" id="add-nombre" placeholder="Nombre"/>
+                               </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-telefono" class="cols-sm-2 control-label">Telefono</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="telefono" id="update-telefono" value="{{ form.telefono.value }}" placeholder="Telefono"/>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-telefono" class="cols-sm-2 control-label">Telefono</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="telefono" id="add-telefono"  placeholder="Telefono"/>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-email" class="cols-sm-2 control-label">Email</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="email" id="update-email" value="{{ form.email.value }}" placeholder="Email"/>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-email" class="cols-sm-2 control-label">Email</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="email" id="add-email"  placeholder="Email"/>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if object %}
+                        <div class="form-group">
+                            <input href="/cliente/" type="submit" id="update-button" class="btn btn-warning btn-lg form-button" value="Modificar"/>
+                        </div>
+                    {% else %}
+                        <div class="form-group ">
+                            <input href="/cliente/" type="submit" id="add-button" class="btn btn-success btn-lg form-button" value="Agregar"/>
+                        </div>
+                    {% endif %}
+                    <a href="/cliente/" class="btn btn-primary btn-lg back-button">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

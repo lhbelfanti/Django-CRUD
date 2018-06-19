@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center">
+            <div class="panel-heading panel-center panel-font-size">
+                <span class="fa fa-list"></span>&nbsp;&nbsp;&nbsp;Lista de géneros (Ordenado / filtrado con una query SQL usando .raw())
+            </div>
+            <div class="panel-body panel-center">
+                <ul class="list-group">
+                    {% for g in generos  %}
+                        <li class="list-group-item">
+                            <span class="fa fa-barcode"></span>&nbsp;{{ g.codigo }}&nbsp;|&nbsp;
+                            <span class="fa fa-quote-left"></span>&nbsp;{{ g.descripcion }}&nbsp;
+                            <div class="pull-right">
+                                <a href="modificar/{{ g.codigo }}"><span class="fa fa-pencil fa-size"></span></a>
+                                <a href="eliminar/{{ g.codigo }}" class="trash"><span class="fa fa-trash fa-size"></span></a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

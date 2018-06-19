@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center">
+            <div class="panel-heading panel-center panel-font-size">
+                <span class="fa fa-list"></span>&nbsp;&nbsp;&nbsp;Lista de clientes
+            </div>
+            <div class="panel-body panel-center">
+                <ul class="list-group">
+                    {% for c in object_list  %}
+                        <li class="list-group-item">
+                            <span class="fa fa-user"></span>&nbsp;{{ c.nombre }}&nbsp;|&nbsp;
+                            <span class="fa fa-phone"></span>&nbsp;{{ c.telefono }}&nbsp;|&nbsp;
+                            <span class="fa fa-envelope"></span>&nbsp;{{ c.email }}&nbsp;
+                            <div class="pull-right">
+                                <a href="modificar/{{ c.nro_cliente }}"><span class="fa fa-pencil"></span></a>
+                                <a href="eliminar/{{ c.nro_cliente }}" class="trash"><span class="fa fa-trash"></span></a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

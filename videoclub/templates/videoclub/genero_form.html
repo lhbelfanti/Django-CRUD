@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center  restrict-width">
+            <div class="panel-heading panel-center panel-font-size">
+                {% if object %}
+                    <span class="fa fa-pencil"></span>&nbsp;&nbsp;&nbsp;Modificar género
+                {% else %}
+                    <span class="fa fa-plus"></span>&nbsp;&nbsp;&nbsp;Agregar género
+                {% endif %}
+            </div>
+            <div class="panel-body panel-center panel-form-center restrict-width">
+                <form method="post">{% csrf_token %}
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-codigo" class="cols-sm-2">Código</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-barcode" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="codigo" id="update-codigo" value="{{ form.codigo.value }}" placeholder="Código"/>
+                               </div>
+                            </div>
+                        {% else %}
+                            <label for="add-codigo" class="cols-sm-2 control-label">Código</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-barcode" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="codigo" id="add-codigo" placeholder="Código"/>
+                               </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-descripcion" class="cols-sm-2 control-label">Descripción</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="descripcion" id="update-descripcion" value="{{ form.descripcion.value }}" placeholder="Descripción"/>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-descripcion" class="cols-sm-2 control-label">Descripción</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="descripcion" id="add-descripcion"  placeholder="Descripción"/>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if object %}
+                        <div class="form-group">
+                            <input href="/genero/" type="submit" id="update-button" class="btn btn-warning btn-lg form-button" value="Modificar"/>
+                        </div>
+                    {% else %}
+                        <div class="form-group ">
+                            <input href="/genero/" type="submit" id="add-button" class="btn btn-success btn-lg form-button" value="Agregar"/>
+                        </div>
+                    {% endif %}
+                    <a href="/genero/" class="btn btn-primary btn-lg back-button">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

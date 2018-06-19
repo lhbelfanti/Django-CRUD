@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary panel-primary-center  restrict-width">
+            <div class="panel-heading panel-center panel-font-size">
+                {% if object %}
+                    <span class="fa fa-pencil"></span>&nbsp;&nbsp;&nbsp;Modificar prestamo
+                {% else %}
+                    <span class="fa fa-plus"></span>&nbsp;&nbsp;&nbsp;Agregar prestamo
+                {% endif %}
+            </div>
+            <div class="panel-body panel-center panel-form-center restrict-width">
+                <form method="post">{% csrf_token %}
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-fecha-alquiler" class="cols-sm-2">Fecha de alquiler</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    <input type="date" class="form-control" name="fecha_alquiler" id="update-fecha-alquiler" value="{{ form.fecha_alquiler.value|date:'Y-m-d' }}" placeholder="Fecha de alquiler"/>
+                               </div>
+                            </div>
+                        {% else %}
+                            <label for="add-fecha-alquiler" class="cols-sm-2 control-label">Fecha de alquiler</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    <input type="date" class="form-control" name="fecha_alquiler" id="add-fecha-alquiler" placeholder="Fecha de alquiler"/>
+                               </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-fecha-devolucion" class="cols-sm-2">Fecha de devolución</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    <input type="date" class="form-control" name="fecha_devolucion" id="update-fecha-devolucion" value="{{ form.fecha_devolucion.value|date:'Y-m-d' }}" placeholder="Fecha de devolución"/>
+                               </div>
+                            </div>
+                        {% else %}
+                            <label for="add-fecha-devolucion" class="cols-sm-2 control-label">Fecha de devolución</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    <input type="date" class="form-control" name="fecha_devolucion" id="add-fecha-devolucion" placeholder="Fecha de devolución"/>
+                               </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-pelicula" class="cols-sm-2 control-label">Película</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-film" aria-hidden="true"></i></span>
+                                    <select name='pelicula' id="update-pelicula" class="form-select">
+                                        <option value="">---------</option>
+                                        {% for pelicula in peliculas %}
+                                            <option value="{{ pelicula.id }}" {% if pelicula.id == form.pelicula.value %} selected {%endif%}>{{ pelicula }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-pelicula" class="cols-sm-2 control-label">Película</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-fil" aria-hidden="true"></i></span>
+                                    <select name='pelicula' id="add-pelicula" class="form-select">
+                                        <option value="">---------</option>
+                                        {% for pelicula in peliculas %}
+                                            <option value="{{ pelicula.id }}">{{ pelicula }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if object %}
+                            <label for="update-cliente" class="cols-sm-2 control-label">Cliente</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <select name='cliente' id="update-cliente" class="form-select">
+                                        <option value="">---------</option>
+                                        {% for cliente in clientes %}
+                                            <option value="{{ cliente.nro_cliente }}" {% if cliente.nro_cliente == form.cliente.value %} selected {%endif%}>{{ cliente }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% else %}
+                            <label for="add-cliente" class="cols-sm-2 control-label">Cliente</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <select name='cliente' id="add-cliente" class="form-select">
+                                        <option value="">---------</option>
+                                        {% for cliente in clientes %}
+                                            <option value="{{ cliente.nro_cliente }}">{{ cliente }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if object %}
+                        <div class="form-group">
+                            <input href="/prestamo/" type="submit" id="update-button" class="btn btn-warning btn-lg form-button" value="Modificar"/>
+                        </div>
+                    {% else %}
+                        <div class="form-group ">
+                            <input href="/prestamo/" type="submit" id="add-button" class="btn btn-success btn-lg form-button" value="Agregar"/>
+                        </div>
+                    {% endif %}
+                    <a href="/prestamo/" class="btn btn-primary btn-lg back-button">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
